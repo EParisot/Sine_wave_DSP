@@ -4,11 +4,10 @@ import struct
 import matplotlib.pyplot as plt
 import sys, os
 
-usage = "usage : python3 sine_wave.py --f freq1 freq2 ... [--p] [--o out_file] [--r rate] [--a amp] [--t time]\n \
+usage = "usage : python3 sine_wave.py --f freq1 freq2 ... [--p] [--o out_file] [--a amp] [--t time]\n \
          f: Frequencies in Hz (int)\n \
          p: Plot wave (1000 first values)\n \
          o: Output file name (no extention) (string)\n \
-         r: sampling Rate (float)\n \
          a: Amplitude between 0 and 1 (float)\n \
          t: Time of sample in seconds (float)\n "
                     
@@ -33,8 +32,6 @@ def args_parser(args):
                             j += 1
                     elif arg == "--o":
                         file_name = args[i + 1]
-                    elif arg == "--r":
-                        r = float(args[i + 1])
                     elif arg == "--a":
                         a = float(args[i + 1]) * 32767
                     elif arg == "--t":
