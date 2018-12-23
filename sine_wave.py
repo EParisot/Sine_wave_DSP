@@ -22,15 +22,15 @@ def args_parser(args):
     file_name = ""
     for i, arg in enumerate(args):
         if "--" in arg:
-            if i + 1 < len(args):
+            if arg == "--p":
+                p = True
+            elif i + 1 < len(args):
                 try:
                     if arg == "--f":
                         j = 0
                         while i + 1 + j < len(args) and "--" not in args[i + 1 + j]:
                             f.append(int(args[i + 1 + j]))
                             j += 1
-                    elif arg == "--p":
-                        p = True
                     elif arg == "--o":
                         file_name = args[i + 1]
                     elif arg == "--r":
