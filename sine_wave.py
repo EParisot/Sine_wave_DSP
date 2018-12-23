@@ -2,7 +2,7 @@ import numpy as np
 import wave
 import struct
 import matplotlib.pyplot as plt
-import sys
+import sys, os
 
 usage = "usage : python3 sine_wave.py --f freq1 freq2 ... [--p] [--o out_file] [--r rate] [--a amp] [--t time]\n \
                     f: Frequencies in Hz (int)\n \
@@ -63,7 +63,7 @@ def build_wave(f, r, a, t):
     return (sine_wave)
 
 def write_wave(sine_wave, f, r, a, t, file_name):
-    file = file_name + ".wav"
+    file = os.path.join("out/", file_name + ".wav")
     print("\nWriting sine wave in ", file, flush=True)
     n_samples = int(r * t)
     comptype = "NONE"
