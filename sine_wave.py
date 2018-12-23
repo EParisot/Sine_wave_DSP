@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import sys, os
 
 usage = "usage : python3 sine_wave.py --f freq1 freq2 ... [--p] [--o out_file] [--a amp] [--t time]\n \
-         f: Frequencies in Hz (int)\n \
+         f: Frequencies in Hz (int, max 24000Hz)\n \
          p: Plot wave (1000 first values)\n \
          o: Output file name (no extention) (string)\n \
          a: Amplitude between 0 and 1 (float)\n \
@@ -98,6 +98,6 @@ if __name__ == "__main__":
         plt.plot(sine_wave)
         plt.title("Audio Wave")
         plt.subplot(2,1,2)
-        plt.plot([int(idx * (1 / t)) for idx, val in enumerate(frequencies)], frequencies)
+        plt.plot([int(idx * (1 / t)) for idx, val in enumerate(frequencies)][:24000], frequencies[:24000])
         plt.title("Frequencies")
         plt.show(block=True)

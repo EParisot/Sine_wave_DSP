@@ -94,7 +94,7 @@ if __name__ == "__main__":
                 plt.plot(sine_wave)
                 plt.subplot(n_plots,1,2)
                 plt.title("Frequencies")
-                plt.plot(frequencies)
+                plt.plot(frequencies[:24000])
             i = 1
             filtered_wave = sine_wave
             for key, val in filters.items():
@@ -106,7 +106,7 @@ if __name__ == "__main__":
                     plt.plot(filtered_wave)
                     plt.subplot(n_plots,1,2 + i + 1)
                     plt.title("Filtered Audio Frequencies " + key)
-                    plt.plot(frequencies)
+                    plt.plot(frequencies[:24000])
                     i += 2
             if p == True:
                 plt.show(block=True)
