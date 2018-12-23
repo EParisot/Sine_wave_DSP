@@ -31,7 +31,7 @@ def args_parser(args):
                         filters["l_" + str(j)] = int(args[i + 1])
                     elif arg == "--h":
                         filters["h_" + str(j)] = int(args[i + 1])
-                    elif arg == "--b" and i + 2 < len(args):
+                    elif arg == "--b":
                         filters["b_" + str(j)] = (int(args[i + 1]), int(args[i + 2]))
                     elif arg == "--r":
                         r = float(args[i + 1])
@@ -100,7 +100,7 @@ if __name__ == "__main__":
                 plt.plot(sine_wave)
                 plt.subplot(2 * len(filters) + 2,1,2)
                 plt.title("Frequencies")
-                plt.plot(frequencies)
+                plt.plot([int(idx * (1 / t)) for idx, val in enumerate(frequencies)], frequencies)
             i = 1
             filtered_wave = sine_wave
             for key, val in filters.items():
@@ -112,7 +112,7 @@ if __name__ == "__main__":
                     plt.plot(filtered_wave)
                     plt.subplot(2 * len(filters) + 2,1,2 + i + 1)
                     plt.title("Filtered Audio Frequencies " + key)
-                    plt.plot(frequencies)
+                    plt.plot([int(idx * (1 / t)) for idx, val in enumerate(frequencies)], frequencies)
                     i += 1
             if p == True:
                 plt.show(block=True)
