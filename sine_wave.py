@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 import sys, os
 
 usage = "usage : python3 sine_wave.py --f freq1 freq2 ... [--p] [--o out_file] [--r rate] [--a amp] [--t time]\n \
-                    f: Frequencies in Hz (int)\n \
-                    p: Plot wave (1000 first values)\n \
-                    o: Output file name (no extention) (string)\n \
-                    r: sampling Rate (float)\n \
-                    a: Amplitude between 0 and 1 (float)\n \
-                    t: Time of sample in seconds (float)\n "
+         f: Frequencies in Hz (int)\n \
+         p: Plot wave (1000 first values)\n \
+         o: Output file name (no extention) (string)\n \
+         r: sampling Rate (float)\n \
+         a: Amplitude between 0 and 1 (float)\n \
+         t: Time of sample in seconds (float)\n "
                     
 
 def args_parser(args):
