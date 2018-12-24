@@ -1,3 +1,5 @@
 matplotlib
 structure
 wave
+pyaudio
+pynput

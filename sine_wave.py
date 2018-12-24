@@ -3,10 +3,10 @@ import wave
 import struct
 import matplotlib.pyplot as plt
 import sys, os
+from const import *
 
-usage = "usage : python3 sine_wave.py --f freq1 freq2 ... [--p] [--o out_file] [--a amp] [--t time]\n \
+usage = "usage : python3 sine_wave.py --f freq1 freq2 ... [--o out_file] [--a amp] [--t time]\n \
          f: Frequencies in Hz (int, max 24000Hz)\n \
-         p: Plot wave (1000 first values)\n \
          o: Output file name (no extention) (string)\n \
          a: Amplitude between 0 and 1 (float)\n \
          t: Time of sample in seconds (float)\n "
@@ -14,16 +14,11 @@ usage = "usage : python3 sine_wave.py --f freq1 freq2 ... [--p] [--o out_file] [
 
 def args_parser(args):
     f = []
-    p = False
-    r = 48000.0
-    a = 32767
     t = 1
     file_name = ""
     for i, arg in enumerate(args):
         if "--" in arg:
-            if arg == "--p":
-                p = True
-            elif i + 1 < len(args):
+            if i + 1 < len(args):
                 try:
                     if arg == "--f":
                         j = 0
@@ -33,7 +28,7 @@ def args_parser(args):
                     elif arg == "--o":
                         file_name = args[i + 1]
                     elif arg == "--a":
-                        a = float(args[i + 1]) * 32767
+                        a = float(args[i + 1]) * A
                     elif arg == "--t":
                         t = float(args[i + 1])
                 except:
@@ -44,10 +39,9 @@ def args_parser(args):
                 print("\nError with arg : ", arg + "\n", flush=True)
                 print(usage, flush=True)
                 exit(0)
-    return(p, f, r, a, t, file_name)
+    return(f, t, file_name)
 
 def build_wave(f, r, a, t):
-    print("\nBuilding wave...", flush=True)
     # calc sample size
     n_samples = int(r * t)
     # calc first sine wave
@@ -56,7 +50,6 @@ def build_wave(f, r, a, t):
     if len(f) > 1:
         for freq in f[1:]:
             sine_wave += np.array([(a / len(f)) * np.sin(2 * np.pi * freq * x / r) for x in range(n_samples)])
-    print("Done", flush=True)
     return (sine_wave)
 
 def write_wave(sine_wave, f, r, a, t, file_name):
@@ -83,21 +76,24 @@ def get_freq(sine_wave):
     return (frequencies)
 
 if __name__ == "__main__":
-    p, f, r, a, t, file_name = args_parser(sys.argv)
+    f, t, file_name = args_parser(sys.argv)
+    r = R
+    a = A
     if len(f) > 0:
+        print("\nBuilding wave...", flush=True)
         sine_wave = build_wave(f, r, a, t)
+        print("Done", flush=True)
         frequencies = get_freq(sine_wave)
     else:
         print("\nError: no frequencies\n",usage, flush=True)
         exit(0)
     if len(file_name) > 0:
         write_wave(sine_wave, f, r, a, t, file_name)
-    if p == True:
-        plt.ion()
-        plt.subplot(2,1,1)
-        plt.plot(sine_wave)
-        plt.title("Audio Wave")
-        plt.subplot(2,1,2)
-        plt.plot([int(idx * (1 / t)) for idx, val in enumerate(frequencies)][:24000], frequencies[:24000])
-        plt.title("Frequencies")
-        plt.show(block=True)
+    plt.ion()
+    plt.subplot(2,1,1)
+    plt.plot(sine_wave)
+    plt.title("Audio Wave")
+    plt.subplot(2,1,2)
+    plt.plot([int(idx * (1 / t)) for idx, val in enumerate(frequencies)][:24000], frequencies[:24000])
+    plt.title("Frequencies")
+    plt.show(block=True)
