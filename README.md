@@ -9,6 +9,8 @@ usage : python3 sine_wave.py --f freq1 freq2 ... [--o out_file] [--a amp] [--t t
         t: Time of sample in seconds (float)
 ```
 
+![](images/example1.bmp)
+
 ## Play wave from file or on Keyboard (whites : Q S D F G H J, blacks : Z E T Y U, 1s samples) sine_player.py:
 ```
 usage: python3 sine_player.py [wav_file]
@@ -22,7 +24,12 @@ usage : python3 sine_filter.py file.wav [--l low_pass OR --h high_pass OR --b ba
         h: High pass Hz value (int)
         b: Band pass Hz values (bottom top) (int)
 ```
+
+![](images/example2.bmp)
+
 ## Find tones from spectrum sine_analiser.py:
 ```
 usage: python3 sine_analyser.py wav_file
 ```
+
+![](images/example3.bmp)
