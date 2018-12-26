@@ -5,8 +5,8 @@
 usage : python3 sine_wave.py --f freq1 freq2 ... [--o out_file] [--a amp] [--t time]
         f: Frequencies in Hz (int, max 24000 Hz)
         o: Output file name (no extention) (string)
-        a: Amplitude between 0 and 1 (float)
-        t: Time of sample in seconds (float)
+        a: Amplitude between 0 and 1 (float) (def 1)
+        t: Time of sample in seconds (float) (def 1)
 ```
 
 ![](images/example1.bmp)
