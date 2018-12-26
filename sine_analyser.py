@@ -37,6 +37,9 @@ def find_freq(frequencies):
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         file = args_parser(sys.argv[1:])
+        if len(file) == 0:
+            print("Error : File not found\n", usage)
+            exit(0)
         sine_wave = read_file(file, R)
         main_frequencies = SF.get_freq(sine_wave)
         filters = find_freq(main_frequencies)
@@ -60,3 +63,6 @@ if __name__ == "__main__":
             plt.plot(frequencies[:MAX_FREQ])
             i += 2
         plt.show(block=True)
+    else:
+        print("Error : No file\n", usage)
+        exit(0)

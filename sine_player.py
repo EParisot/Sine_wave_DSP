@@ -103,8 +103,6 @@ def on_release(key):
         freqs.remove(NOTES['Bb4'])
     elif key == KeyCode(char='j') and NOTES['B4'] in freqs:
         freqs.remove(NOTES['B4'])
-    if len(freqs) > 1 and len(freqs) != freq_len:
-        play_wave(freqs)
 
 def key_listener():
     # Collect events until released
@@ -117,6 +115,9 @@ def key_listener():
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         file = args_parser(sys.argv[1:])
+        if len(file) == 0:
+            print("Error : File not found\n", usage)
+            exit(0)
         read_file(file)
     else:
         p = pyaudio.PyAudio()
