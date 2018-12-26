@@ -44,7 +44,7 @@ def args_parser(args):
 def build_wave(f, r, a, t):
     # calc sample size
     n_samples = int(r * t)
-    # calc first sine wave
+    # calc first sine wave -> amplitude * sin(2pi * frequency * x / rate)
     sine_wave = np.array([(a / len(f)) * np.sin(2 * np.pi * f[0] * x / r) for x in range(n_samples)])
     # calc noises and add them to sine wave
     if len(f) > 1:

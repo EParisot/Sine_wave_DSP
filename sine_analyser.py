@@ -41,6 +41,7 @@ if __name__ == "__main__":
             print("Error : File not found\n", usage)
             exit(0)
         sine_wave = read_file(file, R)
+        # get Fourier transformation
         main_frequencies = SF.get_freq(sine_wave)
         filters = find_freq(main_frequencies)
         plt.ion()
@@ -53,6 +54,7 @@ if __name__ == "__main__":
         plt.plot(main_frequencies[:MAX_FREQ])
         i = 1
         for key, val in filters.items():
+            # apply filters for found frequencies
             filtered_wave = SF.apply_filter(main_frequencies, key, val)
             frequencies = SF.get_freq(filtered_wave)
             plt.subplot(n_plots,1,2 + i)
