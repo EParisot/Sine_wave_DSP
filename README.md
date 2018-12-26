@@ -11,7 +11,8 @@ usage : python3 sine_wave.py --f freq1 freq2 ... [--o out_file] [--a amp] [--t t
 
 ## Play wave from file or on Keyboard (whites : Q S D F G H J, blacks : Z E T Y U, 1s samples) sine_player.py:
 ```
-usage: python3 sine_player.py [.wav file]
+usage: python3 sine_player.py [wav_file]
+(no file to play on keyboard)
 ```
 
 ## Apply filters to wave from file sine_filter.py:
@@ -23,5 +24,5 @@ usage : python3 sine_filter.py file.wav [--l low_pass OR --h high_pass OR --b ba
 ```
 ## Find tones from spectrum sine_analiser.py:
 ```
-usage: python3 sine_analyser.py [.wav file]
+usage: python3 sine_analyser.py wav_file
 ```
